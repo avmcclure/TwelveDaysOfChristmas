@@ -30,7 +30,7 @@ public class InputOutputUtil {
     public void printDayQuestion() {
         printLine(DAY_QUESTION);
     }
-
+    
     public void printPresents(int day, int presents) {
         String presentsString = buildPresentsString(day, presents);
         printLine(presentsString);
@@ -48,7 +48,7 @@ public class InputOutputUtil {
         
         return sb.toString();
     }
-    
+          
     private String calculateOrdinalNumber(int number) {
         int tensMod = number % 10;
         int hundredsMod = number % 100;
@@ -67,5 +67,9 @@ public class InputOutputUtil {
             return " present.";
         return " presents.";
     }
-
+    
+    
+    private void printPresentLine() {
+    	
+    }
 }
