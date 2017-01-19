@@ -2,6 +2,7 @@ package main;
 
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.util.List;
 import java.util.Scanner;
 
 public class InputOutputUtil {
@@ -31,18 +32,18 @@ public class InputOutputUtil {
         printLine(DAY_QUESTION);
     }
     
-    public void printPresents(int day, int presents) {
-        String presentsString = buildPresentsString(day, presents);
+    public void printPresentsSum(int day, int presents) {
+        String presentsString = buildPresentsSumString(day, presents);
         printLine(presentsString);
     }
     
-    private String buildPresentsString(int day, int presents){
+    private String buildPresentsSumString(int day, int presents){
         String ordinalDay = calculateOrdinalNumber(day);
         String presentsPlurality = getSingularOrPluralPresents(presents);
         
         StringBuilder sb = new StringBuilder("On the ");
         sb.append(ordinalDay);
-        sb.append(" day of Christmas your true love should give to you: ");
+        sb.append(" day of Christmas your true love should have given you: ");
         sb.append(presents);
         sb.append(presentsPlurality);      
         
@@ -69,7 +70,12 @@ public class InputOutputUtil {
     }
     
     
-    private void printPresentLine() {
-    	
+    public void printAllPresents(List<Present> presents) {
+        presents.forEach(present -> printPresentLine(present));
+    }
+    
+    private void printPresentLine(Present present) {
+    	String line = present.getNumberOfPresents() + " " + present.getPresentType();
+    	printLine(line);
     }
 }

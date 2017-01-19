@@ -5,10 +5,14 @@ import static org.junit.Assert.assertEquals;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Test;
 
 import main.InputOutputUtil;
+import main.Present;
+import main.PresentEnumerable;
 
 public class InputOutputTest {
     
@@ -56,8 +60,24 @@ public class InputOutputTest {
         ByteArrayOutputStream os = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(os);
         ioUtil = new InputOutputUtil(System.in, ps);
-        ioUtil.printPresents(1, 1);
-        String expectedString = "On the 1st day of Christmas your true love should give to you: 1 present.";
+        
+        ioUtil.printPresentsSum(1, 1);
+        String expectedString = "On the 1st day of Christmas your true love should have given you: 1 present.";
+        assertEquals(expectedString.trim(), os.toString().trim());
+    }
+    
+    @Test
+    public void testIndividualPrintPresentsOne() {
+        ByteArrayOutputStream os = new ByteArrayOutputStream();
+        PrintStream ps = new PrintStream(os);
+        ioUtil = new InputOutputUtil(System.in, ps);
+        
+        Present present = new Present(PresentEnumerable.DAY_ONE, 1);
+        List<Present> presents = new ArrayList<Present>();
+        presents.add(present);
+        
+        ioUtil.printAllPresents(presents);
+        String expectedString = "1 Partridge(s) in a Pear Tree";
         assertEquals(expectedString.trim(), os.toString().trim());
     }
 }

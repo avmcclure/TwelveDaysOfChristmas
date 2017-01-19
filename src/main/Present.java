@@ -1,19 +1,23 @@
 package main;
 
 public class Present {
-	private PresentEnumerable presentType;
+	private PresentEnumerable presentDay;
 	private int numberOfPresents;
 	
 	public Present(PresentEnumerable presentType, int numberOfPresents) {
-		this.presentType = presentType;
+		this.presentDay = presentType;
 		this.numberOfPresents = numberOfPresents;
 	}
 
-	public PresentEnumerable getPresentType() {
-		return presentType;
+	public PresentEnumerable getPresentDay() {
+		return presentDay;
 	}
 
 	public int getNumberOfPresents() {
 		return numberOfPresents;
+	}
+	
+	public String getPresentType() {
+	    return presentDay.getPresent();
 	}
 }
